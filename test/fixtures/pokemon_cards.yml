@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_name: MyString
+  image: MyString
+  detail: MyText
+  box_category_id: one
+  genre_category_id: one
+  sales_area_id: one
+  card_rarity_id: one
+
+two:
+  card_name: MyString
+  image: MyString
+  detail: MyText
+  box_category_id: two
+  genre_category_id: two
+  sales_area_id: two
+  card_rarity_id: two
