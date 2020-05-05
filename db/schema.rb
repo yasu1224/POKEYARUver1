@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_085214) do
+ActiveRecord::Schema.define(version: 2020_05_04_030254) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -38,4 +38,49 @@ ActiveRecord::Schema.define(version: 2020_04_30_085214) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "box_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "release_date"
+    t.string "box_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "card_rarities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "rarity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genre_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pokemon_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_name"
+    t.string "image"
+    t.text "detail"
+    t.bigint "box_category_id"
+    t.bigint "genre_category_id"
+    t.bigint "sales_area_id"
+    t.bigint "card_rarity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_category_id"], name: "index_pokemon_cards_on_box_category_id"
+    t.index ["card_rarity_id"], name: "index_pokemon_cards_on_card_rarity_id"
+    t.index ["genre_category_id"], name: "index_pokemon_cards_on_genre_category_id"
+    t.index ["sales_area_id"], name: "index_pokemon_cards_on_sales_area_id"
+  end
+
+  create_table "sales_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "area"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "pokemon_cards", "box_categories"
+  add_foreign_key "pokemon_cards", "card_rarities"
+  add_foreign_key "pokemon_cards", "genre_categories"
+  add_foreign_key "pokemon_cards", "sales_areas"
 end

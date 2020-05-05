@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-## pokemoncardテーブル
+## pokemon_cardテーブル
 |Column|Type|Options|
 |------|----|-------|
 |card_name|string|null: false|
