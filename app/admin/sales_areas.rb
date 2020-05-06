@@ -14,5 +14,12 @@ ActiveAdmin.register SalesArea do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  index do
+    selectable_column
+    id_column
+    column :area
+    column '登録カード数' do |sales_area|
+      sales_area.pokemon_cards.count
+    end
+  end
 end

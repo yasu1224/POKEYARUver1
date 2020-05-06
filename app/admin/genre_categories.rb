@@ -14,5 +14,12 @@ ActiveAdmin.register GenreCategory do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  index do
+    selectable_column
+    id_column
+    column :genre
+    column '登録カード数' do |genre_category|
+      genre_category.pokemon_cards.count
+    end
+  end
 end

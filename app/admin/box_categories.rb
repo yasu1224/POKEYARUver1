@@ -14,5 +14,14 @@ ActiveAdmin.register BoxCategory do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  index do
+    selectable_column
+    id_column
+    column :release_date
+    column :box_name
+    column '登録カード数' do |box_category|
+      box_category.pokemon_cards.count
+    end
+    actions
+  end
 end
