@@ -67,3 +67,4 @@ gem 'activeadmin-translate' # 日本語化
 gem 'devise-i18n' # 日本語化
 gem "globalize", github: "globalize/globalize", branch: "master" # 日本語化
 gem 'rails-i18n'
+gem 'carrierwave'

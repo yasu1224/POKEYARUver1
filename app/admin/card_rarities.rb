@@ -14,5 +14,12 @@ ActiveAdmin.register CardRarity do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  index do
+    selectable_column
+    id_column
+    column :rarity
+    column '登録カード数' do |card_rarity|
+      card_rarity.pokemon_cards.count
+    end
+  end
 end

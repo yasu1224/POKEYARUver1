@@ -16,15 +16,37 @@ ActiveAdmin.register PokemonCard do
   # end
 
   form do |f|
-    f.inputs do
+    f.inputs 'ポケモンカード登録'do
       f.input :box_category, :as => :select, :member_label => :box_name
       f.input :genre_category, :as => :select, :member_label => :genre
       f.input :sales_area, :as => :select, :member_label => :area
       f.input :card_rarity, :as => :select, :member_label => :rarity
       f.input :card_name
-      f.input :image
+      f.input :image, :as => :file
       f.input :detail
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    id_column
+    column :image
+    column :card_name
+    column :detail
+    column '拡張ボックス名' do |pokemon_card|
+      pokemon_card.box_category.box_name
+    end
+    column 'ジャンル' do |pokemon_card|
+      pokemon_card.genre_category.genre
+    end
+    column '発売地域' do |pokemon_card|
+      pokemon_card.sales_area.area
+    end
+    column 'レアリティ' do |pokemon_card|
+      pokemon_card.card_rarity.rarity
+    end
+    actions
+  end
+
 end
